@@ -8,7 +8,7 @@ font-family: 'Poppins', sans-serif;
 
 :root{
     --blackpure: #000;
-    --black: #171718;
+    --black: #202024;
     --black-border: #26292D;
     --white: #fff;
     --purple: #5C62EC;
@@ -17,16 +17,32 @@ font-family: 'Poppins', sans-serif;
     --dark-border: var(--black-border);
     --header-text: var(--white);
     --accent: var(--purple);
-    --text-color: var(--black)
+
+    /*Light mode */
+    --page-bg: var(--white);
+    --text-color: var(--black);
+
+    --project-card-bg: var(--black);
+    --project-card-text: var(--white);
+}
+
+.dark{
+        /*Dark mode */
+        --page-bg: #252526;
+        --text-color: var(--white);
+        --btn-color: #434346;
 }
 
 html, body {
     font-family: 'DM Sans', sans-serif;
     letter-spacing: -0.5px;
-    color: var(--text-color);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100vh;
+
+    /* color mode */
+    background-color: var(--page-bg);
+    color: var(--text-color);
 }
 
 
@@ -216,8 +232,9 @@ html, body {
 /* Btn outline */
 
 .btn-outline{
-    border: 1px solid var(--blackpure);
-    color: var(--blackpure);
+    background-color: var(--btn-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
     padding: 12px 20px;
     height: 48px;
     border-radius: 5px;
@@ -274,8 +291,8 @@ html, body {
 
 .project{
     max-width: 370px;
-    background-color: var(--white);
-    box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.25);
+    background-color: --project-card-bg;
+    box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
 }
 
