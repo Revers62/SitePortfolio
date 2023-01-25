@@ -1,18 +1,19 @@
 const btnDarkMode = document.querySelector('.dark-mode-btn');
 
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    btnDarkMode.classList.add('dark-mode-btn--active');
-    document.body.classList.add('dark');
-}
 
-if (localStorage.getItem('darkmode') === 'dark') {
+
+if (localStorage.getItem('darkMode') === 'dark') {
     btnDarkMode.classList.add('dark-mode-btn--active');
     document.body.classList.add('dark'); 
-}else if(localStorage.getItem('darkmode') === 'light'){
+}else if(localStorage.getItem('darkMode') === 'light'){
     btnDarkMode.classList.remove('dark-mode-btn--active');
     document.body.classList.remove('dark');
 }
 
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    btnDarkMode.classList.add('dark-mode-btn--active');
+    document.body.classList.add('dark');
+}
 
 
 window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
@@ -21,18 +22,18 @@ window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').addEventL
     if (newColorSheme === 'dark') {
         btnDarkMode.classList.add('dark-mode-btn--active');
         document.body.classList.add('dark');
-        localStorage.setItem('darkmode', 'dark');
+        localStorage.setItem('darkMode', 'dark');
     }else{
         btnDarkMode.classList.remove('dark-mode-btn--active');
         document.body.classList.remove('dark');
-        localStorage.setItem('darkmode', 'light');
+        localStorage.setItem('darkMode', 'light');
     }
 })
 
-btnDarkMode.onclick = () => {
+btnDarkMode.onclick = (isDarkMode) => {
     btnDarkMode.classList.toggle('dark-mode-btn--active');
-    
-    const isDark = document.body.classList.toggle('dark');
+    document.body.classList.toggle('dark');
+    const isDark = btnDarkMode.classList.contains('dark-mode-btn--active');
 
     if (isDark) {
         localStorage.setItem('darkMode', 'dark');
